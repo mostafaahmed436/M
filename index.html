@@ -1,24 +1,40 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="ar">
   <head>
-    <meta charset="utf-8">
-    <title>معمل كيمياء VR</title>
+    <meta charset="UTF-8">
+    <title>معمل الكيمياء - واقع افتراضي</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <style>
+      body { margin: 0; font-family: sans-serif; }
+      .title {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255,255,255,0.85);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        z-index: 2;
+        color: #000;
+      }
+    </style>
   </head>
   <body>
-    <a-scene background="color: #1a1a1a">
-      <!-- تحميل النموذج -->
+    <div class="title">🔬 معمل الكيمياء الافتراضي</div>
+    <a-scene embedded vr-mode-ui="enabled: true" background="color: #ECECEC">
       <a-assets>
-        <a-asset-item id="labModel" src="lab.glb"></a-asset-item>
+        <a-asset-item id="labModel" src="chemestry_lab_classroom.glb"></a-asset-item>
       </a-assets>
 
-      <!-- عرض النموذج -->
-      <a-entity gltf-model="#labModel" position="0 0 -3" scale="1 1 1"></a-entity>
-
-      <!-- الكاميرا -->
-      <a-entity position="0 1.6 3">
+      <!-- كاميرا حرة الحركة -->
+      <a-entity position="0 1.6 4">
         <a-camera wasd-controls look-controls></a-camera>
       </a-entity>
+
+      <!-- إدراج مجسم المعمل -->
+      <a-entity gltf-model="#labModel" scale="1 1 1" position="0 0 0"></a-entity>
     </a-scene>
   </body>
 </html>
